@@ -1,0 +1,46 @@
+{
+ "rows_all_feeds": 281190,
+ "route_type_counts": {
+  "3": 276584,
+  "200": 2309,
+  "1": 887,
+  "0": 510,
+  "4": 102,
+  "2": 91,
+  "6": 2
+ },
+ "rows_no_route": 1277,
+ "dup_stop_ids": 24152,
+ "dup_same_wk_n": 8381,
+ "dup_both_served": 22637,
+ "dup_both_served_same": 7671,
+ "unique_stops": 255792,
+ "outside_england": 1554,
+ "england_stops": 254202,
+ "england_bus_stops": 251790,
+ "mixed_bus_other": 0,
+ "bus_zero_tuesday_share_by_region": {
+  "North East": 0.0174,
+  "North West": 0.0142,
+  "Yorkshire": 0.0151,
+  "East Midlands": 0.0119,
+  "West Midlands": 0.0216,
+  "East of England": 0.0237,
+  "London": 0.0139,
+  "South East": 0.0296,
+  "South West": 0.0378
+ },
+ "bus_stops_by_region": {
+  "North East": 15147,
+  "North West": 33708,
+  "Yorkshire": 30980,
+  "East Midlands": 25612,
+  "West Midlands": 27024,
+  "East of England": 27995,
+  "London": 19083,
+  "South East": 39695,
+  "South West": 32546
+ },
+ "served_bus_stops": 246358,
+ "late_after_29h": 729
+}

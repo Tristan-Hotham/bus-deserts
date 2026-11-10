@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bus deserts | The villages with no bus and the last bus home</title>
+<meta name="description" content="Every bus stop in England by its weekday departures, last bus and Sunday service, and {{settle.village.n|int}} villages checked for a usable bus within 800 m.">
+<meta property="og:title" content="Bus deserts">
+<meta property="og:description" content="{{head.v_poor_pc|f0}}% of English villages have no stop with four or more weekday buses within 800 m. {{head.v_no_sun_pc|f0}}% have no Sunday bus.">
+<meta property="og:image" content="https://maps.tristanhotham.com/bus-deserts/header.png">
+<meta property="og:url" content="https://maps.tristanhotham.com/bus-deserts/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+{{CSS}}
+</style></head>
+<body>
+<div class="topbar">
+  <a class="tb-name" href="#mapWrap">Bus deserts</a>
+  <span class="tb-k">Data study · 2026</span>
+  <nav class="tb-links"><a href="#essay">About</a><button class="theme" id="theme" aria-label="Toggle dark mode">◐</button><a href="https://doi.org/10.5281/zenodo.24116216">Paper</a><a class="x" href="{{REPO}}">Data and code</a></nav>
+</div>
+<div class="mapband">
+  <div class="pane" id="mapWrap" data-fullscreen-map role="application" aria-label="Map of England's bus stops coloured by weekday departures, with villages flagged where there is no usable bus">
+    <div id="map"></div>
+    <div class="nojs" id="nojs">Loading {{feed.bus_stops|int}} bus stops. The map needs JavaScript and WebGL.</div>
+    <div class="cartouche" id="cartouche">
+      <button class="ct-toggle" id="ctToggle" aria-expanded="true">Bus deserts ▾</button>
+      <button class="ct-fold" id="ctFold" title="Fold the title" aria-label="Fold the title">▴</button>
+      <div class="ct-body">
+        <div class="kicker"><b>Data study</b><span>2026</span></div>
+        <h1>Bus <span class="a">deserts</span></h1>
+        <p class="dek">Every bus stop in England's timetables, by how many buses leave it on a weekday, when the last one goes and whether anything runs on Sunday. Squares are villages: red ones have no stop with a weekday bus within 800 m. Drag the clock (villages hide while it runs) to see the network shut down for the night.</p>
+        <div class="byline">{{BYLINE}}</div>
+      </div>
+    </div>
+    <div class="ov-top">
+      <div class="srch"><input type="search" id="q" placeholder="Find a village or town" aria-label="Find a village or town" autocomplete="off"><ul class="sug" id="sug" role="listbox"></ul></div>
+      <div class="chips"><button class="chip" data-m="wk" aria-pressed="true">Weekday buses</button><button class="chip" data-m="last" aria-pressed="false">Last bus</button><button class="chip" data-m="sun" aria-pressed="false">Sunday</button><button class="chip lyr" id="lyrBtn" aria-expanded="false" aria-controls="lp">Layers</button></div>
+    </div>
+    <div class="lp" id="lp" role="dialog" aria-label="Map layers">
+      <h4>Layers</h4>
+      <label><input type="checkbox" id="lyS" checked> Bus stops</label>
+      <label><input type="checkbox" id="lyV" checked> Villages and towns (squares)</label>
+      <label><input type="checkbox" id="lyD"> Only villages with no usable bus</label>
+      <label><input type="checkbox" id="lyH"> Hamlets too</label>
+      <label><input type="checkbox" id="lyE" checked> England outline (the area mapped)</label>
+      <label><input type="checkbox" id="lyL" checked> Base map labels</label>
+    </div>
+    <div class="keys" id="keys"><b id="keyTitle">Weekday departures</b><div id="keyRows"></div>
+      <div class="row" style="margin-top:4px">Villages (squares): weekday buses at the busiest stop within 800 m</div><div class="row" style="flex-wrap:wrap;line-height:1.6;gap:2px 10px"><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#7A1F12;border:1.5px solid #fff;box-shadow:0 0 0 1px #7A1F12;margin:0 4px 0 0;vertical-align:-1px"></span>none</span><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#C8644A;border:1.5px solid #fff;box-shadow:0 0 0 1px #C8644A;margin:0 4px 0 0;vertical-align:-1px"></span>1 to 3</span><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#E8B04A;border:1.5px solid #fff;box-shadow:0 0 0 1px #E8B04A;margin:0 4px 0 0;vertical-align:-1px"></span>4 to 11</span><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#9DBBD6;border:1.5px solid #fff;box-shadow:0 0 0 1px #9DBBD6;margin:0 4px 0 0;vertical-align:-1px"></span>12 to 47</span><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#1F3F66;border:1.5px solid #fff;box-shadow:0 0 0 1px #1F3F66;margin:0 4px 0 0;vertical-align:-1px"></span>48+</span></div>
+      <div class="row kx" style="color:#6E604E">England only · a Tuesday, Saturday and Sunday in 2026</div></div>
+    <div class="tl" id="tl"><button id="play" aria-label="Play the evening">▶ Play</button><input type="range" id="hr" min="12" max="25" step="0.25" value="12" aria-label="Time of day"><b id="hrl">All day</b></div>
+  </div>
+</div>
+<div class="wrap" id="essay">
+<p style="margin-top:6px">How far is your nearest bus, and when does the last one leave? I took the timetables that bus operators in England publish through the Department for Transport's Bus Open Data Service, counted the buses leaving every stop on an ordinary Tuesday, Saturday and Sunday, and then looked at every village in Wikidata to see what it actually gets.</p>
+<div class="byline">{{BYLINE}} · Data: Bus Open Data Service (OGL v3.0), Wikidata (CC0), English Indices of Deprivation 2025 and ONS Rural Urban Classification 2021 (OGL v3.0) · Base map: OpenFreeMap Positron</div>
+<div class="stats">
+<div class="stat"><b>{{head.v_desert_pc|f0}}%</b><span>of English villages have no stop with a weekday bus within 800 m</span></div>
+<div class="stat"><b>{{head.v_poor_pc|f0}}%</b><span>have no stop with four or more weekday buses</span></div>
+<div class="stat"><b>{{head.v_no_sun_pc|f0}}%</b><span>have no Sunday bus within 800 m</span></div>
+<div class="stat"><b>{{lsoa.pop_poor|m}}</b><span>people live in small areas with no usable weekday bus</span></div>
+</div>
+
+<h2><span class="n">01 · Distance</span>A third of villages have no weekday bus nearby</h2>
+<p>I checked {{settle.village.n|int}} English villages. For {{settle.village.desert|int}} of them ({{settle.village.desert_pc|f0}}%), no stop within 800 metres, about a ten minute walk, had a single bus on the Tuesday. For {{settle.village.deep|int}} ({{settle.village.deep_pc|f0}}%) the nearest bus was more than 1.6 km away. Another {{settle.village.token|int}} ({{settle.village.token_pc|f0}}%) had a stop with one to three buses all day, which is often not enough to get somewhere and back. Together that is {{settle.village.poor|int}} villages, {{head.v_poor_pc|f0}}%, without what I call a usable weekday bus. Hamlets fare worse ({{settle.hamlet.poor_pc|f0}}%); towns are almost all served ({{settle.town.poor|int}} of {{settle.town.n|int}} are not).</p>
+<div class="figure"><img src="img/map.jpg" alt="Map of England's villages as dots coloured from dark red (no bus within 800 m) to dark blue (48 or more weekday buses); red dots are spread through the countryside in every region" loading="lazy"><p class="src">Each dot is a village, coloured by its busiest stop within 800 m.</p></div>
+<div class="figure"><img src="img/classes.jpg" alt="Stacked bars: {{settle.hamlet.desert_pc|f0}}% of hamlets and {{settle.village.desert_pc|f0}}% of villages have no bus within 800 m, against under 1% of towns and no cities" loading="lazy"><p class="src">The smaller the place, the thinner the service.</p></div>
+
+<h2><span class="n">02 · Time</span>The last bus home</h2>
+<p>Having a bus is one thing; getting home on it is another. Of the villages with any weekday bus within 800 m, the last one leaves before 19:00 in {{x_last.before19|int}} of {{last_hist.N|int}}. Across all villages, {{head.v_no_eve_pc|f0}}% have no bus from 19:00 and {{head.v_no_sun_pc|f0}}% have none on a Sunday. Only {{head.v_full_pc|f0}}% have a usable weekday service, an evening bus and a Sunday bus together. By 19:00, {{by_hour.v19|f0}}% of villages still have a bus to come; by 21:00, {{by_hour.v21|f0}}%. The slider on the map shows this happening stop by stop.</p>
+<div class="figure"><img src="img/lastbus.jpg" alt="Bar chart of the time of the last weekday bus in villages, with large groups at 18:00 to 18:59 and 22:00 to 23:59, and a line chart showing the share of villages with a bus still to come falling sharply after 17:00" loading="lazy"><p class="src">Many villages lose their buses around tea time; others are on a trunk route that runs late.</p></div>
+
+<h2><span class="n">03 · People</span>Who lives in a bus desert</h2>
+<p>Villages are places, not people, so I also looked at England's {{lsoa.n|int}} small areas (LSOAs, about 1,700 people each). {{lsoa.pop_poor|m}} people ({{lsoa.pop_poor_pc|f1}}%) live in one with no usable weekday bus within 800 m of its centre point. In rural areas it is {{lsoa.rural_poor_pc|f0}}% of residents; in urban areas, {{lsoa.urban_poor_pc|f1}}%. In the smallest, most remote rural areas it is {{by_ruc.Smaller rural, far from city.poor_pc|f0}}%.</p>
+<div class="figure"><img src="img/rural.jpg" alt="Bars by rural-urban class: residents with no usable weekday bus rise from {{by_ruc.Urban, near city.poor_pc|f0}}% in urban areas near a city to {{by_ruc.Smaller rural, far from city.poor_pc|f0}}% in smaller rural areas far from a city" loading="lazy"><p class="src">Small areas by the 2021 rural-urban classification.</p></div>
+<p>Before looking, I wrote down three expectations. Rural areas would be worse served: they are, by a wide margin. Holding rurality and region fixed, more deprived areas would be better served, because buses tend to follow the people who use them: they are (odds ratio {{x.imd_or|f2}} per standard deviation of the deprivation score, 95% interval {{x.imd_lo|f2}} to {{x.imd_hi|f2}}), but the pattern inside the countryside is a hump, and it comes from whether there is a stop at all rather than how often buses call. And areas with more older residents would be worse served: they are (odds ratio {{x.old_or|f2}}, {{x.old_lo|f2}} to {{x.old_hi|f2}}). {{lsoa.pop60_poor|m}} people aged 60 and over live in small areas with no usable weekday bus.</p>
+<p>One planned check did not pass. A measure of housing condition that should have nothing to do with buses was also linked to poor service, which suggests the rural-urban classes do not capture every difference between places. So treat the deprivation and age results as descriptive patterns, not causes.</p>
+<div class="figure"><img src="img/deprivation.jpg" alt="Line chart by deprivation decile: in rural areas the share with no usable bus is about {{by_imd.1.poor_pc_rural|f0}}% in the most deprived decile, over 50% in the middle deciles and {{by_imd.10.poor_pc_rural|f0}}% in the least deprived; urban areas stay under 7% throughout" loading="lazy"><p class="src">Deprivation deciles from the English Indices of Deprivation 2025.</p></div>
+<div class="figure"><img src="img/checks.jpg" alt="Forest plot of odds ratios under each check: deprivation below 1 in every check except the token-service-only outcome, where the interval crosses 1; the share aged 60 and over above 1 in every check" loading="lazy"><p class="src">Every planned check of the small-area model.</p></div>
+
+<h2><span class="n">04 · Regions</span>Where the buses are</h2>
+<p>Counting each bus once at every stop it calls at, England has {{reg.eng_v|f0}} weekday stop departures for every 1,000 residents. London has {{reg.london_v|f0}}. Outside London the range runs from {{reg.dep_max_v|f0}} in the {{reg.dep_max}} to {{reg.dep_min_v|f0}} in the {{reg.dep_min}}. The share of villages with no usable weekday bus runs from {{reg.vpoor_min_v|f0}}% in the {{reg.vpoor_min}} to {{reg.vpoor_max_v|f0}}% in the {{reg.vpoor_max}}: a region can have a busy city network and a thin rural one at the same time.</p>
+<div class="figure"><img src="img/regions.jpg" alt="Two bar charts by region: weekday stop departures per 1,000 residents, highest in London and lowest in the East of England, and the share of villages with no usable weekday bus, highest in the West Midlands" loading="lazy"><p class="src">Regions are ONS regions; stops are placed by their coordinates.</p></div>
+
+<h2><span class="n">05 · How I did this</span>Timetables, villages and small areas</h2>
+<p><b>Buses.</b> The Bus Open Data Service publishes every registered local bus timetable in England as regional GTFS files. I counted the departures from each stop on one Tuesday, Saturday and Sunday in 2026, kept bus and coach stops, and removed stops that appear in two regional files. {{feed.bus_stops|int}} bus stops remain, {{feed.served|int}} with at least one Tuesday bus.</p>
+<p><b>Places.</b> Villages, hamlets and towns come from Wikidata. For each one I found the nearest stop with a weekday bus, and among stops within 800 m, the busiest one, the last departure and whether anything runs after 19:00 or on Sunday. I read every town flagged as a desert by eye and fixed or removed {{overrides.n|int}} bad points. Small areas use the English Indices of Deprivation 2025 and the ONS rural-urban classification; I wrote the analysis plan before computing any result.</p>
+<p><b>What this cannot say.</b> It is one week's timetables. School-day-only buses, dial-a-ride services and community transport may be missing or look odd; a few places, such as Hawes in the Yorkshire Dales, have stops in the files but no Tuesday trips. Distances are straight lines, not walks, and each small area is placed at a point inside it, not where most of its people live. A stop departure is a bus calling, not a useful journey.</p>
+<details><summary>Sources and licences</summary>
+<ul class="plain">
+<li>Timetables: Department for Transport, Bus Open Data Service (data.bus-data.dft.gov.uk), regional GTFS files, downloaded 2026. Open Government Licence v3.0.</li>
+<li>Villages, hamlets and towns: Wikidata (CC0).</li>
+<li>English Indices of Deprivation 2025 (Ministry of Housing, Communities and Local Government), Open Government Licence v3.0.</li>
+<li>Rural Urban Classification 2021 and LSOA 2021 boundaries (Office for National Statistics), Open Government Licence v3.0, via the geographr R package (humaniverse, GitHub). Region and country boundaries: ONS, OGL v3.0.</li>
+<li>Base map: OpenFreeMap Positron style (OpenStreetMap, ODbL). MapLibre GL JS 4.7.1 (BSD 3-Clause).</li>
+<li>Text, figures and data CC BY 4.0; code MIT.</li>
+</ul></details>
+<div class="cta"><a class="p" href="https://doi.org/10.5281/zenodo.24116216">Read the paper</a><a href="{{REPO}}">Data and code</a><a href="https://blog.tristanhotham.com/2026/10/31/bus-deserts/">Blog post</a></div>
+<footer>
+<p>Dr Tristan Hotham, Independent researcher. ORCID <a href="https://orcid.org/0000-0003-4931-9349">0000-0003-4931-9349</a>.</p>
+<p>Cite as: Hotham, T. (2026) Bus deserts: villages without a usable bus, the last bus home and who lives beyond the network in England. Zenodo. <a href="https://doi.org/10.5281/zenodo.24116216">10.5281/zenodo.24116216</a></p>
+<p>Code: <a href="{{REPO}}">github.com/Tristan-Hotham/bus-deserts</a> (MIT). Text, figures and data CC BY 4.0.</p>
+<p>{{AI}}</p>
+</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="js/page.js?v={{VERSION}}"></script>
+{{FULLSCREEN}}
+<script src="https://maps.tristanhotham.com/assets/site-nav.js" defer></script>
+</body>
+</html>

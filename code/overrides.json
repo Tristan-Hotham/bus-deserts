@@ -1,0 +1,14 @@
+{"_note": "Hand checks of every town or city (Wikidata type town, market town or city) found more than 800 m from a stop with a weekday bus in the first run. Coordinates corrected only where the Wikidata point was clearly off the town (checked against the names and positions of stops in the feed, e.g. 'The Platt' in Wadebridge, 'Amersham Station', 'Williton Fore Street'). Items that are not real present-day towns are dropped. Hawes is kept as measured: its stops are in the feed, but the timetables give no Tuesday or Saturday trips (only Sunday), a likely feed gap that is reported in the paper.",
+ "settlements": {
+  "Q5648594": {"drop": true, "why": "Hanley Grange: proposed new town, never built"},
+  "Q17675616": {"drop": true, "why": "Roman small town at Dorn: archaeological site"},
+  "Q7989462": {"drop": true, "why": "Weston Otmoor: proposed eco-town, never built"},
+  "Q261619": {"lat": 50.5167, "lon": -4.8357, "why": "Wadebridge: Wikidata point about 3.5 km west of the town"},
+  "Q2569076": {"lat": 52.551, "lon": 0.088, "why": "March: Wikidata point rounded to 0.01 degrees, outside the town"},
+  "Q1018157": {"lat": 51.484, "lon": -2.7626, "why": "Portishead: Wikidata latitude about 18 km south of the town"},
+  "Q470188": {"lat": 51.674, "lon": -0.607, "why": "Amersham: Wikidata point rounded, about 2 km west of the town"},
+  "Q1226004": {"lat": 51.162, "lon": -3.321, "why": "Williton: Wikidata point about 1 km east of the village centre"}
+ },
+ "reviewed_ok": {"Q2225538": "Hawes: stops present, no Tuesday or Saturday trips in the feed (Sunday only); kept, flagged as a likely feed gap",
+                 "Q1881422": "Woburn: point correct; nearest stop with a Tuesday departure 2.9 km away (one departure)"}
+}

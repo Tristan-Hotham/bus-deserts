@@ -1,0 +1,7 @@
+[
+ {"w": 1280, "h": 860, "out": "qa/desktop.png"},
+ {"w": 1280, "h": 860, "out": "qa/desktop_evening.png", "eval": "window.__setHour(20);document.getElementById('lyrBtn').click()"},
+ {"w": 390, "h": 844, "dpr": 2, "out": "qa/phone.png"},
+ {"w": 390, "h": 844, "dpr": 2, "out": "qa/phone_popup.png", "eval": "document.getElementById('q').value='Hawes';document.getElementById('q').dispatchEvent(new Event('input'));document.querySelector('#sug li[data-i]').click()"},
+ {"w": 1280, "h": 860, "out": "qa/desktop_full.png", "full": true}
+]

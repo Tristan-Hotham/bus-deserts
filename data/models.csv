@@ -1,0 +1,107 @@
+model,label,term,or,lo,hi,b,p,ame,ame_lo,ame_hi,n
+main,Main specification,"Urban, far from city",1.751,1.267,2.419,,0.0006846173092579766,3.41,1.48,5.35,33755
+main,Main specification,"Larger rural, near city",7.052,5.952,8.356,,9.834061765726975e-113,11.91,11.04,12.78,33755
+main,Main specification,"Larger rural, far from city",8.307,6.512,10.598,,4.2026070069131005e-65,12.91,11.62,14.2,33755
+main,Main specification,"Smaller rural, near city",29.386,24.274,35.575,,2.264855433138604e-263,20.61,19.57,21.65,33755
+main,Main specification,"Smaller rural, far from city",45.838,34.235,61.374,,1.6418377760910212e-145,23.32,21.68,24.96,33755
+main,Main specification,IMD score (per SD),0.684,0.601,0.779,,9.108172898210324e-09,-2.32,-3.08,-1.55,33755
+main,Main specification,Share aged 60+ (per SD),1.28,1.185,1.382,,3.056820991799023e-10,1.51,1.04,1.97,33755
+r400,Radius 400 m,"Urban, far from city",1.486,1.203,1.836,,0.00023874040807818345,4.77,2.27,7.28,33755
+r400,Radius 400 m,"Larger rural, near city",4.972,4.403,5.616,,4.1950890666361994e-147,19.32,18.06,20.58,33755
+r400,Radius 400 m,"Larger rural, far from city",5.52,4.463,6.827,,6.3606196696806775e-56,20.58,18.21,22.95,33755
+r400,Radius 400 m,"Smaller rural, near city",21.648,17.949,26.109,,5.9054636247927875e-227,37.04,34.89,39.19,33755
+r400,Radius 400 m,"Smaller rural, far from city",38.305,28.157,52.111,,3.2064585442328634e-119,43.92,40.37,47.46,33755
+r400,Radius 400 m,IMD score (per SD),0.666,0.613,0.724,,6.563449887626509e-22,-4.89,-5.83,-3.95,33755
+r400,Radius 400 m,Share aged 60+ (per SD),1.241,1.172,1.313,,8.646664694202198e-14,2.6,1.92,3.28,33755
+r1200,"Radius 1,200 m","Urban, far from city",2.405,1.607,3.599,,1.9896350146363002e-05,3.61,2.01,5.21,33755
+r1200,"Radius 1,200 m","Larger rural, near city",8.67,6.799,11.056,,6.8040075136553e-68,8.88,7.97,9.79,33755
+r1200,"Radius 1,200 m","Larger rural, far from city",10.205,7.4,14.072,,1.474825933138423e-45,9.55,8.37,10.73,33755
+r1200,"Radius 1,200 m","Smaller rural, near city",39.602,30.631,51.2,,2.178890322996993e-173,15.12,14.21,16.04,33755
+r1200,"Radius 1,200 m","Smaller rural, far from city",57.998,40.504,83.048,,7.111271020825116e-109,16.69,15.27,18.12,33755
+r1200,"Radius 1,200 m",IMD score (per SD),0.778,0.675,0.896,,0.00048298406576886724,-1.03,-1.62,-0.45,33755
+r1200,"Radius 1,200 m",Share aged 60+ (per SD),1.22,1.111,1.341,,3.29381670822788e-05,0.82,0.44,1.19,33755
+tok2,Token threshold 2 departures,"Urban, far from city",1.805,1.313,2.481,,0.0002745506903006508,3.45,1.62,5.28,33755
+tok2,Token threshold 2 departures,"Larger rural, near city",7.108,5.961,8.475,,8.465419649606815e-106,11.46,10.59,12.32,33755
+tok2,Token threshold 2 departures,"Larger rural, far from city",8.581,6.775,10.869,,4.6113415224430685e-71,12.56,11.32,13.8,33755
+tok2,Token threshold 2 departures,"Smaller rural, near city",28.99,23.756,35.376,,6.29727149345977e-241,19.67,18.64,20.7,33755
+tok2,Token threshold 2 departures,"Smaller rural, far from city",45.811,34.709,60.465,,1.162177629597515e-160,22.35,20.83,23.86,33755
+tok2,Token threshold 2 departures,IMD score (per SD),0.665,0.606,0.73,,6.303834742085556e-18,-2.38,-2.94,-1.82,33755
+tok2,Token threshold 2 departures,Share aged 60+ (per SD),1.249,1.158,1.346,,6.660135137895407e-09,1.3,0.87,1.72,33755
+tok6,Token threshold 6 departures,"Urban, far from city",1.782,1.31,2.424,,0.00023281184142394062,3.66,1.78,5.53,33755
+tok6,Token threshold 6 departures,"Larger rural, near city",6.763,5.685,8.046,,2.743219512479003e-103,12.09,11.19,13.0,33755
+tok6,Token threshold 6 departures,"Larger rural, far from city",8.555,6.625,11.046,,7.246900761707387e-61,13.58,12.27,14.89,33755
+tok6,Token threshold 6 departures,"Smaller rural, near city",32.075,26.42,38.94,,4.2859727397156925e-269,21.94,20.8,23.08,33755
+tok6,Token threshold 6 departures,"Smaller rural, far from city",54.551,39.345,75.635,,3.894103261413578e-127,25.3,23.46,27.15,33755
+tok6,Token threshold 6 departures,IMD score (per SD),0.676,0.57,0.802,,7.122577236800811e-06,-2.48,-3.49,-1.47,33755
+tok6,Token threshold 6 departures,Share aged 60+ (per SD),1.287,1.189,1.394,,4.896406170959245e-10,1.6,1.09,2.1,33755
+allmodes,"Tram, metro, rail and ferry stops included","Urban, far from city",1.761,1.276,2.431,,0.0005739892997486044,3.45,1.52,5.37,33755
+allmodes,"Tram, metro, rail and ferry stops included","Larger rural, near city",7.08,5.975,8.389,,3.167206445561629e-113,11.91,11.05,12.78,33755
+allmodes,"Tram, metro, rail and ferry stops included","Larger rural, far from city",8.361,6.567,10.645,,1.5448904820979854e-66,12.92,11.64,14.21,33755
+allmodes,"Tram, metro, rail and ferry stops included","Smaller rural, near city",29.514,24.387,35.719,,7.162714740806238e-265,20.6,19.57,21.63,33755
+allmodes,"Tram, metro, rail and ferry stops included","Smaller rural, far from city",46.138,34.511,61.682,,1.683401379370443e-147,23.32,21.68,24.95,33755
+allmodes,"Tram, metro, rail and ferry stops included",IMD score (per SD),0.68,0.603,0.765,,1.8955411086344304e-10,-2.35,-3.05,-1.65,33755
+allmodes,"Tram, metro, rail and ferry stops included",Share aged 60+ (per SD),1.28,1.185,1.382,,3.002866013070907e-10,1.5,1.04,1.96,33755
+sumdup,Cross-feed duplicates summed,"Urban, far from city",1.755,1.276,2.413,,0.0005450928230276382,3.42,1.52,5.32,33755
+sumdup,Cross-feed duplicates summed,"Larger rural, near city",7.124,6.013,8.44,,4.401811828023557e-114,11.95,11.08,12.81,33755
+sumdup,Cross-feed duplicates summed,"Larger rural, far from city",8.348,6.565,10.616,,4.2398252586705476e-67,12.91,11.65,14.17,33755
+sumdup,Cross-feed duplicates summed,"Smaller rural, near city",29.555,24.422,35.768,,4.108723921651867e-265,20.6,19.57,21.64,33755
+sumdup,Cross-feed duplicates summed,"Smaller rural, far from city",45.436,33.977,60.76,,4.590658341507769e-146,23.22,21.6,24.84,33755
+sumdup,Cross-feed duplicates summed,IMD score (per SD),0.685,0.602,0.78,,1.0006431043750208e-08,-2.3,-3.06,-1.54,33755
+sumdup,Cross-feed duplicates summed,Share aged 60+ (per SD),1.276,1.183,1.378,,3.67149523775173e-10,1.49,1.03,1.94,33755
+centroid,LSOA geometric centroid,"Urban, far from city",1.762,1.288,2.411,,0.0004004528158405492,3.27,1.5,5.03,33755
+centroid,LSOA geometric centroid,"Larger rural, near city",6.533,5.438,7.848,,1.960456532166421e-89,10.82,9.9,11.74,33755
+centroid,LSOA geometric centroid,"Larger rural, far from city",6.964,5.298,9.155,,5.608783228672124e-44,11.19,9.75,12.63,33755
+centroid,LSOA geometric centroid,"Smaller rural, near city",30.07,24.753,36.528,,1.200671829017573e-257,19.63,18.67,20.58,33755
+centroid,LSOA geometric centroid,"Smaller rural, far from city",45.612,34.476,60.345,,1.2846544399157778e-157,22.03,20.46,23.59,33755
+centroid,LSOA geometric centroid,IMD score (per SD),0.659,0.568,0.764,,3.490609560316812e-08,-2.41,-3.24,-1.57,33755
+centroid,LSOA geometric centroid,Share aged 60+ (per SD),1.275,1.183,1.374,,1.7469257375576533e-10,1.4,0.98,1.82,33755
+income,Income deprivation instead of IMD,"Urban, far from city",1.827,1.323,2.522,,0.00025139680363418267,3.66,1.74,5.57,33755
+income,Income deprivation instead of IMD,"Larger rural, near city",6.843,5.768,8.118,,8.364232877260424e-108,11.67,10.8,12.54,33755
+income,Income deprivation instead of IMD,"Larger rural, far from city",8.504,6.697,10.799,,4.931914351403357e-69,12.99,11.74,14.24,33755
+income,Income deprivation instead of IMD,"Smaller rural, near city",24.895,20.738,29.885,,1.305744940855898e-260,19.5,18.48,20.52,33755
+income,Income deprivation instead of IMD,"Smaller rural, far from city",39.086,29.894,51.105,,3.4620708238865537e-158,22.24,20.71,23.77,33755
+income,Income deprivation instead of IMD,Income deprivation (per SD),0.536,0.466,0.618,,5.592002033059614e-18,-3.78,-4.6,-2.96,33755
+income,Income deprivation instead of IMD,Share aged 60+ (per SD),1.187,1.101,1.28,,7.77793269292573e-06,1.04,0.59,1.49,33755
+lpm,Linear probability model,"Urban, far from city",,0.64,4.54,2.59,0.009344207802841424,,,,33755
+lpm,Linear probability model,"Larger rural, near city",,18.44,23.33,20.89,4.7953316483872725e-63,,,,33755
+lpm,Linear probability model,"Larger rural, far from city",,19.66,27.35,23.51,3.9074137736317974e-33,,,,33755
+lpm,Linear probability model,"Smaller rural, near city",,51.99,58.37,55.18,7.000268095609542e-252,,,,33755
+lpm,Linear probability model,"Smaller rural, far from city",,58.74,69.12,63.93,1.1600615631264154e-128,,,,33755
+lpm,Linear probability model,IMD score (per SD),,-1.5,-0.63,-1.06,2.0193489881408655e-06,,,,33755
+lpm,Linear probability model,Share aged 60+ (per SD),,1.05,1.98,1.51,1.4527619893274923e-10,,,,33755
+nolondon,London excluded,"Urban, far from city",1.755,1.27,2.425,,0.0006506160187312538,4.0,1.75,6.25,28761
+nolondon,London excluded,"Larger rural, near city",7.073,5.968,8.383,,8.29314505236587e-113,13.9,12.89,14.91,28761
+nolondon,London excluded,"Larger rural, far from city",8.348,6.543,10.65,,2.319040272569868e-65,15.08,13.58,16.58,28761
+nolondon,London excluded,"Smaller rural, near city",29.502,24.366,35.722,,1.8090751127087712e-263,24.05,22.84,25.26,28761
+nolondon,London excluded,"Smaller rural, far from city",46.091,34.414,61.73,,1.2148875045497443e-145,27.22,25.31,29.14,28761
+nolondon,London excluded,IMD score (per SD),0.686,0.602,0.781,,1.2341838373084794e-08,-2.68,-3.57,-1.79,28761
+nolondon,London excluded,Share aged 60+ (per SD),1.272,1.178,1.374,,7.839364299499134e-10,1.71,1.17,2.25,28761
+desert_only,Outcome: no served stop within 800 m,"Urban, far from city",1.886,1.37,2.596,,9.901672651309094e-05,3.63,1.82,5.43,33755
+desert_only,Outcome: no served stop within 800 m,"Larger rural, near city",7.066,5.938,8.409,,1.5249356677960813e-107,11.17,10.3,12.04,33755
+desert_only,Outcome: no served stop within 800 m,"Larger rural, far from city",8.447,6.674,10.691,,1.5801222637127873e-70,12.19,10.95,13.43,33755
+desert_only,Outcome: no served stop within 800 m,"Smaller rural, near city",27.11,22.253,33.028,,2.4020287625621493e-235,18.85,17.81,19.89,33755
+desert_only,Outcome: no served stop within 800 m,"Smaller rural, far from city",42.889,32.388,56.794,,1.1128919614474817e-151,21.47,19.95,23.0,33755
+desert_only,Outcome: no served stop within 800 m,IMD score (per SD),0.657,0.6,0.719,,9.24589757221527e-20,-2.4,-2.93,-1.87,33755
+desert_only,Outcome: no served stop within 800 m,Share aged 60+ (per SD),1.232,1.142,1.329,,6.611026648033501e-08,1.19,0.77,1.61,33755
+token_only,Outcome: token service (LSOAs with a stop),"Urban, far from city",1.145,0.549,2.385,,0.7182094433286008,0.16,-0.7,1.02,30705
+token_only,Outcome: token service (LSOAs with a stop),"Larger rural, near city",5.886,3.774,9.18,,5.454171985404277e-15,2.11,1.64,2.58,30705
+token_only,Outcome: token service (LSOAs with a stop),"Larger rural, far from city",6.037,2.987,12.202,,5.499056172498992e-07,2.14,1.43,2.84,30705
+token_only,Outcome: token service (LSOAs with a stop),"Smaller rural, near city",20.111,13.43,30.113,,4.3427580194522104e-48,3.57,3.02,4.11,30705
+token_only,Outcome: token service (LSOAs with a stop),"Smaller rural, far from city",22.66,12.602,40.745,,1.9190191590515567e-25,3.71,3.1,4.31,30705
+token_only,Outcome: token service (LSOAs with a stop),IMD score (per SD),0.911,0.589,1.409,,0.6743185510302687,-0.11,-0.61,0.39,30705
+token_only,Outcome: token service (LSOAs with a stop),Share aged 60+ (per SD),1.407,1.206,1.641,,1.3440043308310914e-05,0.41,0.17,0.64,30705
+falsify,Falsification: Indoors sub-domain instead of IMD,"Urban, far from city",1.561,1.124,2.169,,0.00791182120673902,2.71,0.74,4.68,33755
+falsify,Falsification: Indoors sub-domain instead of IMD,"Larger rural, near city",7.538,6.287,9.038,,1.6993834980963982e-105,12.27,11.32,13.22,33755
+falsify,Falsification: Indoors sub-domain instead of IMD,"Larger rural, far from city",6.801,5.211,8.875,,3.251977189007025e-45,11.65,10.17,13.12,33755
+falsify,Falsification: Indoors sub-domain instead of IMD,"Smaller rural, near city",24.172,19.206,30.423,,2.9904342095891755e-162,19.35,18.11,20.59,33755
+falsify,Falsification: Indoors sub-domain instead of IMD,"Smaller rural, far from city",29.054,20.927,40.337,,4.442571877256297e-90,20.47,18.59,22.34,33755
+falsify,Falsification: Indoors sub-domain instead of IMD,Indoors living environment (per SD),1.23,1.141,1.326,,6.550187774768385e-08,1.26,0.78,1.73,33755
+falsify,Falsification: Indoors sub-domain instead of IMD,Share aged 60+ (per SD),1.414,1.308,1.53,,4.6358683071158605e-18,2.11,1.66,2.56,33755
+falsify_both,IMD and Indoors sub-domain together,"Urban, far from city",1.808,1.302,2.511,,0.00040695743491226343,3.57,1.63,5.51,33755
+falsify_both,IMD and Indoors sub-domain together,"Larger rural, near city",7.064,5.928,8.419,,7.9958440868968975e-106,11.79,10.9,12.69,33755
+falsify_both,IMD and Indoors sub-domain together,"Larger rural, far from city",7.424,5.734,9.612,,3.0069827134178495e-52,12.09,10.72,13.46,33755
+falsify_both,IMD and Indoors sub-domain together,"Smaller rural, near city",20.267,16.298,25.203,,2.895433780353146e-161,18.15,17.0,19.3,33755
+falsify_both,IMD and Indoors sub-domain together,"Smaller rural, far from city",27.51,19.971,37.894,,1.7528969329551548e-91,19.99,18.22,21.76,33755
+falsify_both,IMD and Indoors sub-domain together,IMD score (per SD),0.568,0.493,0.656,,8.430983830940932e-15,-3.41,-4.25,-2.57,33755
+falsify_both,IMD and Indoors sub-domain together,Share aged 60+ (per SD),1.227,1.131,1.331,,7.753663200821201e-07,1.23,0.76,1.71,33755
+falsify_both,IMD and Indoors sub-domain together,Indoors living environment (per SD),1.422,1.324,1.526,,2.1783801675275536e-22,2.12,1.67,2.57,33755

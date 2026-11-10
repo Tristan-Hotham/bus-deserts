@@ -1,0 +1,134 @@
+<!-- wp:paragraph -->
+<p><em>How far is your nearest bus, and when does the last one leave? I counted every timetabled bus departure in England on an ordinary Tuesday, Saturday and Sunday and checked every village. {{head.v_poor_pc|f0}}% have no stop with four or more weekday buses within 800 metres, and {{head.v_no_sun_pc|f0}}% have no Sunday bus within that distance.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://maps.tristanhotham.com/bus-deserts/">Explore the interactive version</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://doi.org/10.5281/zenodo.24116216">Read the paper</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:paragraph -->
+<p>Most of what we hear about rural buses is about loss. Bus mileage in England outside London is down by more than a quarter since 2005, according to the Department for Transport's own statistics. Campaigners have counted thousands of routes reduced or withdrawn. What is harder to find is a simple picture of what is left: which villages still have a bus, how often it comes, and whether you can get home on it in the evening.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>That picture is now possible to draw. Every bus operator in England has to publish its timetables as open data through the Department for Transport's Bus Open Data Service, and the department publishes them as one file per region. I took all nine regional files, counted the buses leaving every one of {{feed.bus_stops|int}} bus stops on a Tuesday, a Saturday and a Sunday in 2026, and then asked the same questions of every village in Wikidata.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">A third of villages have no weekday bus nearby</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I checked {{settle.village.n|int}} English villages. For {{settle.village.desert|int}} of them, {{settle.village.desert_pc|f0}}%, there was no stop within 800 metres with a single bus on the Tuesday. That is about a ten minute walk, as the crow flies. For {{settle.village.deep|int}} villages the nearest weekday bus was more than 1.6 km away.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Another {{settle.village.token|int}} villages had a stop with only one, two or three buses all day. Sometimes that is a school run; sometimes it is a bus into town in the morning and one back in the afternoon. It is rarely enough to get to work. Put those together and {{settle.village.poor|int}} villages, {{head.v_poor_pc|f0}}%, have no usable weekday bus. For hamlets it is {{settle.hamlet.poor_pc|f0}}%. Towns, by contrast, are almost all served: only {{settle.town.poor|int}} of {{settle.town.n|int}} are not.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_map.png|Map of England's villages as small dots, dark red where there is no bus within 800 metres and blue where buses are frequent; red dots appear in every region|Every village in Wikidata, coloured by the busiest bus stop within 800 metres on a weekday.}}
+
+{{IMG|b_classes.png|Stacked bars for hamlets, villages, towns and cities: about half of hamlets and a third of villages have no bus within 800 metres, against almost no towns and no cities|The smaller the place, the thinner the service.}}
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">The last bus home</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Having a bus is one thing. Getting home on it is another. Of the villages with any weekday bus within 800 metres, the last one leaves before seven in the evening in {{x_last.before19|int}} of {{last_hist.N|int}}. Across all villages, {{head.v_no_eve_pc|f0}}% have no bus from 19:00, and {{head.v_no_sun_pc|f0}}% have none on a Sunday. Even among villages with a usable weekday service, a third have nothing in the evening and almost half have nothing on Sunday. Saturday, interestingly, is nearly as good as a weekday.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Only {{head.v_full_pc|f0}}% of villages have all three: a usable weekday service, an evening bus and a Sunday bus. On the map there is a clock you can drag through the evening. At six o'clock most of the network is still there. By nine, the countryside has mostly gone grey.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_lastbus.png|Bar chart of the time of the last weekday bus in villages, with peaks between 18:00 and 19:00 and again between 22:00 and midnight, and a line chart where the share of villages with a bus still to come drops sharply after 17:00|When the last bus leaves, and how fast the countryside loses its buses through the evening.}}
+
+<!-- wp:pullquote -->
+<figure class="wp-block-pullquote"><blockquote><p>Only {{head.v_full_pc|f0}}% of English villages have a usable weekday bus, an evening bus and a Sunday bus.</p></blockquote></figure>
+<!-- /wp:pullquote -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Who lives in a bus desert</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Villages are places, not people, so I also looked at England's {{lsoa.n|int}} small statistical areas, which hold about 1,700 people each. {{lsoa.pop_poor|m}} people, {{lsoa.pop_poor_pc|f1}}% of the population, live in one with no usable weekday bus within 800 metres of its centre point. In rural areas that is {{lsoa.rural_poor_pc|f0}}% of residents; in towns and cities, {{lsoa.urban_poor_pc|f1}}%. In the smallest and most remote rural areas it is {{by_ruc.Smaller rural, far from city.poor_pc|f0}}%, and {{by_ruc.Smaller rural, far from city.no_sun_pc|f0}}% have no Sunday bus.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_rural.png|Bars by type of area: residents with no usable weekday bus rise from {{by_ruc.Urban, near city.poor_pc|f0}}% in urban areas near a city to {{by_ruc.Smaller rural, far from city.poor_pc|f0}}% in smaller rural areas far from one, with even higher shares for no evening bus and no Sunday bus|Small areas by the official 2021 rural and urban classes.}}
+
+<!-- wp:paragraph -->
+<p>Before I looked at any of this, I wrote down what I expected. I thought rural areas would be worse served. They are, by a long way. I thought that once you compare like with like, more deprived areas would be better served, because buses tend to follow the people who use them, and those are often people without a car. They are, though inside the countryside the pattern is a hump: the most deprived and the least deprived rural areas both do better than the ones in the middle. And I thought areas with more older people would be worse served. They are too: {{lsoa.pop60_poor|m}} people aged 60 and over live in small areas with no usable weekday bus.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_deprivation.png|Line chart by deprivation decile: in rural areas the share with no usable bus is low in the most deprived decile, over half in the middle deciles and lower again in the least deprived; in urban areas it stays low throughout|Inside the countryside, a hump rather than a slope.}}
+
+<!-- wp:paragraph -->
+<p>One check did not come out the way it should have. I included a test that ought to show nothing: a measure of housing quality (homes in poor condition or with poor energy performance), which has no obvious reason to be linked to buses. It was linked. That tells me the official rural and urban classes do not capture every difference between places, so the patterns for deprivation and age are worth knowing about, but they are descriptions, not causes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Busy cities, empty lanes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Counting each bus once at every stop it calls at, England has {{reg.eng_v|f0}} weekday stop departures for every 1,000 residents, and London {{reg.london_v|f0}}. Outside London the range runs from {{reg.dep_max_v|f0}} in the {{reg.dep_max}} to {{reg.dep_min_v|f0}} in the {{reg.dep_min}}. But the {{reg.dep_max}} also has the highest share of villages with no usable weekday bus, {{reg.vpoor_max_v|f0}}%. A region can have a busy city network and a very thin rural one at the same time, and a regional average hides that.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_regions.png|Two bar charts by region: weekday stop departures per 1,000 residents, highest in London and the West Midlands, and the share of villages with no usable weekday bus, highest in the West Midlands|Regions compared two ways.}}
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">How I did this</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The timetables come from the Bus Open Data Service. I counted the departures at every stop on one Tuesday, Saturday and Sunday in 2026, kept bus and coach stops, and removed stops that appear in two regional files. For each village I found the nearest stop with a weekday bus, and among the stops within 800 metres, the busiest one, the last departure, and whether anything runs after seven in the evening or on a Sunday. I read every town that came out as a bus desert by eye, which turned up a few Wikidata points in the wrong place and two new towns that were never built. The small areas use the English Indices of Deprivation 2025 and the official rural and urban classes. I wrote the full analysis plan before computing any result, and the paper reports every check in it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>There are real limits. It is one week's timetables. School buses, dial a ride services and community transport may be missing, and some councils rely on exactly those in the places that show up here as deserts. A few places, such as Hawes in the Yorkshire Dales, have stops in the files but no Tuesday trips, which looks like a gap in the data. Distances are straight lines, not walks along lanes without pavements, and each small area is placed at a point inside it, not where most of its people live. And a bus calling at a stop is not the same as a bus going somewhere you need to go.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Because the timetables are published all the time, the same code can be run again next year to see whether these numbers go up or down. If you live in a village, the map will tell you what the timetables say about yours.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://maps.tristanhotham.com/bus-deserts/">Explore the interactive version</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://doi.org/10.5281/zenodo.24116216">Read the paper</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/Tristan-Hotham/bus-deserts">Data and code</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Notes and sources</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Timetables: Department for Transport, Bus Open Data Service (data.bus-data.dft.gov.uk), regional GTFS files. Open Government Licence v3.0.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Villages, hamlets and towns from Wikidata (CC0). English Indices of Deprivation 2025 (Ministry of Housing, Communities and Local Government) and the ONS 2021 Rural Urban Classification, both Open Government Licence v3.0. Base map: OpenFreeMap, OpenStreetMap contributors (ODbL).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Bus mileage: Department for Transport, Annual Bus Statistics, year ending March 2025. Routes cut: Campaign for Better Transport, Buses in Crisis (2018).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Further reading: K. Lucas, Transport and social exclusion: where are we now? (Transport Policy, 2012); G. Mattioli, K. Lucas and G. Marsden, Transport poverty and fuel poverty in the UK (Transport Policy, 2017); I. Shergold and G. Parkhurst, Transport-related social exclusion amongst older people in rural Southwest England and Wales (Journal of Rural Studies, 2012).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
