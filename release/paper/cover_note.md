@@ -1,0 +1,13 @@
+# Cover note: Bus Deserts
+
+## Suitable journals (fees and limits checked in 2026)
+
+1. **Journal of Transport Geography** (Elsevier). A subscription journal with an optional paid open access route; publishing through the subscription route has no author fee. It has published much of the work this paper builds on (Currie 2010; Velaga et al. 2012; Fransen et al. 2015; Delbosc and Currie 2011). Its current word limit could not be confirmed from the publisher's pages: check the Guide for Authors before submitting. The paper's text before the references is about 6,800 words including tables and captions.
+2. **Journal of Rural Studies** (Elsevier). Subscription journal with an optional paid open access route (no fee on the subscription route). Suits the rural framing and the older-population finding (Shergold and Parkhurst 2012 is in this journal). Word limit not confirmed: check the Guide for Authors.
+3. **Research in Transportation Economics** (Elsevier). Hybrid: the subscription route has no author fee, with an optional paid open access route. Suits the supply and policy framing (Mulley and Nelson 2009 is in this journal). Word limit not confirmed: check the Guide for Authors.
+
+Checked and not suggested (all charge authors): *Journal of Transport and Land Use* is open access but charges an article processing charge of 1,500 US dollars (1,000 for authors affiliated with its society, WSTLUR), with waivers on request; its articles usually run 4,000 to 10,000 words. *Findings* (Findings Press, formerly Transport Findings) charges up to 100 US dollars, with a waiver policy, and takes only short pieces of about 1,000 words.
+
+## Summary of the contribution (150 words)
+
+Evidence on rural buses in England comes mostly from aggregate mileage statistics, counts of withdrawn routes and local case studies. This paper uses the complete regional timetables published through the Bus Open Data Service to measure, place by place, three dimensions of bus supply: distance, frequency and time of day. Counting departures at 251,790 stops on one weekday, Saturday and Sunday, it finds that 41% of 15,012 English villages have no stop with four or more weekday buses within 800 m, 62% no bus from 19:00 and 68% none on Sunday. 6.0 million people live in small areas without a usable weekday bus, 72% of them rural. A pre-specified model finds that, with rurality held fixed, more deprived areas are less often without a usable bus and older ones more often; a planned falsification test failed, so these are reported as patterns, not causes. Data and code allow the measurement to be repeated on later timetables.

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bus deserts | The villages with no bus and the last bus home</title>
+<meta name="description" content="Every bus stop in England by its weekday departures, last bus and Sunday service, and 15,012 villages checked for a usable bus within 800 m.">
+<meta property="og:title" content="Bus deserts">
+<meta property="og:description" content="41% of English villages have no stop with four or more weekday buses within 800 m. 68% have no Sunday bus.">
+<meta property="og:image" content="https://maps.tristanhotham.com/bus-deserts/header.png">
+<meta property="og:url" content="https://maps.tristanhotham.com/bus-deserts/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+:root{--bg:#F6EED8;--panel:#EFE3C4;--fg:#2B2119;--muted:#6E604E;--rule:#E2D3AE;--card:#FBF5E4;--border:#D3C29A;--hot:#B4442E;--cool:#2F6A9E;
+  --display:"Fraunces",Georgia,serif;--body:"Source Serif 4",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1A1612;--panel:#241E18;--fg:#EFE6D4;--muted:#ADA08B;--rule:#3A3128;--card:#211B15;--border:#4D4234;--hot:#E07A6C;--cool:#8FB4DA;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1A1612;--panel:#241E18;--fg:#EFE6D4;--muted:#ADA08B;--rule:#3A3128;--card:#211B15;--border:#4D4234;--hot:#E07A6C;--cool:#8FB4DA;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.62 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+.wrap{max-width:720px;margin:0 auto;padding-block:28px 64px}
+a{color:inherit;text-decoration-color:var(--hot);text-underline-offset:3px}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kicker b{background:var(--hot);color:#fff;padding:5px 8px;font-weight:500}
+h2{font:800 34px/1.04 var(--display);letter-spacing:-.01em;margin:54px 0 10px;text-wrap:balance}
+h2 .n{font:500 13px/1 var(--mono);color:var(--hot);display:block;letter-spacing:.1em;margin-bottom:10px}
+p{margin:0 0 16px}
+.byline{font:400 13px/1.4 var(--mono);color:var(--muted);margin-top:14px}
+.src{font:400 12px/1.45 var(--mono);color:var(--muted);margin-top:10px}
+ul.plain{padding-left:20px} ul.plain li{margin:4px 0}
+details{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px 0;margin:18px 0;font-size:16px}
+summary{font:500 13px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0}
+.cta a{font:500 13px/1 var(--mono);text-decoration:none;border:1px solid var(--fg);padding:11px 14px;border-radius:3px}
+.cta a.p{background:var(--hot);border-color:var(--hot);color:#fff}
+footer{border-top:6px double var(--fg);margin-top:56px;padding-top:16px;font:400 13px/1.55 var(--mono);color:var(--muted)}
+footer p{margin:0 0 10px}
+.theme{font:500 12px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:4px 8px;cursor:pointer;min-height:28px}
+.figure{margin:22px 0}.figure img{width:100%;display:block;border:1px solid var(--border);background:#F6EED8}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:22px 0}
+.stat b{display:block;font:900 40px/1 var(--display);color:var(--hot)}
+.stat span{font:400 13px/1.35 var(--mono);color:var(--muted)}
+table.t{width:100%;border-collapse:collapse;font:400 13.5px/1.4 var(--mono);margin:12px 0 4px}
+table.t th{text-align:left;font-weight:500;border-bottom:2px solid var(--fg);padding:5px 6px 5px 0}
+table.t td{border-bottom:1px solid var(--rule);padding:5px 6px 5px 0;vertical-align:top}
+table.t td.r,table.t th.r{text-align:right}
+.tscroll{overflow-x:auto}
+.topbar{height:40px;display:flex;align-items:center;gap:14px;margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:0 max(14px,env(safe-area-inset-left,0px));border-bottom:3px double var(--fg);background:var(--bg);overflow:hidden;white-space:nowrap}
+.tb-name{font:800 18px/1 var(--display);color:var(--hot);text-decoration:none}
+.tb-k{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tb-links{margin-left:auto;display:flex;gap:16px;align-items:center;font:500 12px/1 var(--mono)}
+.tb-links a{text-decoration:none}
+.mapband{width:100vw;margin-left:calc(50% - 50vw)}
+.pane{position:relative;height:calc(100vh - 43px);height:calc(100svh - 43px);min-height:480px;border-bottom:1px solid #BCA676;background:#EEF1F2;overflow:hidden}
+#map{position:absolute;inset:0}
+.cartouche{position:absolute;left:14px;top:14px;z-index:5;max-width:min(340px,calc(100% - 28px));background:rgba(251,243,220,.96);color:#2B2119;border:2px solid #2B2119;padding:10px 14px;box-shadow:0 3px 14px rgba(60,40,10,.22)}
+.cartouche h1{font:900 clamp(22px,2.3vw,30px)/1 var(--display);letter-spacing:-.015em;margin:6px 0 0;color:#2B2119}
+.cartouche h1 .a{color:#B4442E}
+.cartouche .dek{font-size:13.5px;line-height:1.36;margin:6px 0 0}
+.cartouche .byline{font-size:11px;color:#6E604E;margin-top:6px}.cartouche .kicker{color:#6E604E}
+.ct-fold{position:absolute;right:6px;top:5px;width:26px;height:26px;border:0;background:none;color:#B4442E;font:700 16px/1 var(--mono);cursor:pointer;padding:0}
+.ct-toggle{display:none;font:800 16px/1 var(--display);color:#B4442E;background:none;border:0;padding:2px 0;cursor:pointer;min-height:30px}
+.cartouche.folded .ct-body,.cartouche.folded .ct-fold{display:none}.cartouche.folded .ct-toggle{display:block}.cartouche.folded{padding:4px 11px}
+.ov-top{position:absolute;z-index:6;right:54px;top:10px;max-width:calc(100% - 480px);display:flex;flex-direction:column;gap:6px;align-items:flex-end;pointer-events:none;font:400 13px/1.3 var(--mono);color:#2B2119}
+.ov-top>*{pointer-events:auto}
+.srch{position:relative;width:min(340px,100%)}
+.srch input{width:100%;font:400 15px/1 var(--mono);background:rgba(251,245,228,.97);color:#2B2119;border:1px solid #9C8656;border-radius:3px;padding:9px 10px;min-height:40px}
+.sug{position:absolute;left:0;right:0;top:100%;margin:2px 0 0;padding:0;list-style:none;background:#FBF5E4;border:1px solid #9C8656;max-height:300px;overflow:auto;display:none;z-index:12}
+.sug li{padding:8px 10px;cursor:pointer;border-bottom:1px solid #E7D9B6}.sug li span{color:#7A6A52;font-size:12px}
+.sug li[aria-selected="true"],.sug li:hover{background:#EFE1BC}
+.chips{display:flex;gap:6px;overflow-x:auto;max-width:100%;scrollbar-width:none;padding-bottom:2px}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font:500 12px/1 var(--mono);background:rgba(251,245,228,.95);color:#2B2119;border:1px solid #9C8656;border-radius:999px;padding:8px 11px;cursor:pointer;min-height:34px;white-space:nowrap}
+.chip[aria-pressed="true"]{background:#B4442E;color:#fff;border-color:#2B2119}
+.chip.lyr{background:#2B2119;color:#F6EED8;border-color:#2B2119}
+.lp{position:absolute;right:54px;top:60px;z-index:9;background:rgba(251,245,228,.98);border:1px solid #9C8656;border-radius:4px;padding:10px 12px 8px;font:400 13px/1.3 var(--mono);color:#2B2119;box-shadow:0 3px 12px rgba(60,40,10,.25);display:none;min-width:250px}
+.lp.open{display:block}.lp h4{margin:0 0 6px;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#7A6A52}
+.lp label{display:flex;gap:8px;align-items:center;padding:5px 0;cursor:pointer;min-height:30px}.lp input{accent-color:#B4442E;width:16px;height:16px;flex:none}
+.keys{position:absolute;left:12px;bottom:12px;z-index:4;background:rgba(251,243,220,.96);border:1px solid #9C8656;border-radius:3px;padding:8px 10px;font:400 11.5px/1.25 var(--mono);color:#2B2119;max-width:270px}
+.keys b{display:block;font:800 14px/1.1 var(--display);margin-bottom:5px}
+.keys .bar{height:10px;border:1px solid rgba(43,33,25,.4)}
+.keys .ends{display:flex;justify-content:space-between;font-size:10.5px;color:#6E604E;margin-top:2px}
+.keys .row{display:flex;align-items:center;gap:6px;margin-top:5px}.keys .dot{width:10px;height:10px;border-radius:50%;background:#B9B4AA;border:1px solid #fff;box-shadow:0 0 0 1px #888}
+.maplibregl-popup-content{background:#FBF5E4;color:#2B2119;font:400 13px/1.45 var(--mono);border:1px solid #9C8656;border-radius:4px;padding:10px 12px;max-width:320px;max-height:44vh;overflow:auto}
+.maplibregl-popup-content b.t{display:block;font:800 19px/1.15 var(--display);color:#B4442E;margin-bottom:3px;padding-right:14px}
+.maplibregl-popup-content table{border-collapse:collapse;margin:5px 0}.maplibregl-popup-content td{padding:1px 8px 1px 0;vertical-align:top}
+.maplibregl-popup-content td:first-child{color:#7A6A52}.maplibregl-popup-content .nt{color:#7A6A52;font-size:11.5px;margin:5px 0 0}
+.maplibregl-popup-content a{color:#B4442E}
+.maplibregl-ctrl-attrib{font:400 11px/1.3 var(--mono)!important}
+.nojs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:400 14px var(--mono);color:#6E604E;padding:20px;text-align:center}
+@media (max-width:1000px){.ov-top{left:10px;right:54px;max-width:none;align-items:flex-start}.lp{left:10px;right:auto;top:100px}.cartouche{top:100px}}
+@media (max-width:600px){.tb-k,.tb-links a.x{display:none}.topbar{gap:10px}.tb-name{font-size:15px}.tb-links{gap:10px}
+  .lp{left:8px;right:8px;min-width:0}.ov-top{left:8px;top:8px}.cartouche{left:8px;top:100px;max-width:calc(100% - 16px)}.cartouche h1{font-size:23px}
+  .ct-toggle{display:block}.ct-fold{display:none}.keys{max-width:200px;font-size:10.5px;padding:6px 8px}.chip{padding:8px 8px;font-size:11.5px}.keys .kx{display:none}.chips{flex-wrap:wrap}.cartouche{top:150px}}
+.maplibregl-popup{z-index:7}
+.tl{position:absolute;left:12px;right:60px;bottom:12px;z-index:5;display:flex;align-items:center;gap:10px;background:rgba(251,243,220,.96);border:1px solid #9C8656;border-radius:3px;padding:6px 10px;font:400 12px/1.2 var(--mono);color:#2B2119;max-width:560px}
+.tl input[type=range]{flex:1;accent-color:#B4442E;min-width:80px}
+.tl b{font:800 15px/1 var(--display);min-width:92px;text-align:center}
+.tl button{font:500 12px/1 var(--mono);background:#2B2119;color:#F6EED8;border:0;border-radius:3px;padding:7px 9px;cursor:pointer;min-height:30px}
+.keys{bottom:64px}
+.spark{display:block;margin:6px 0 2px}
+.maplibregl-popup-content .pl{border-top:1px solid #E2D3AE;margin-top:6px;padding-top:6px}
+@media (max-width:600px){.tl{left:8px;right:52px;bottom:8px;gap:6px;padding:5px 7px}.tl b{min-width:70px;font-size:13px}.keys{bottom:56px}}
+
+@media (max-width:600px){.tl{bottom:30px}.keys{bottom:80px;max-height:34vh;overflow:auto}}
+
+</style></head>
+<body>
+<div class="topbar">
+  <a class="tb-name" href="#mapWrap">Bus deserts</a>
+  <span class="tb-k">Data study · 2026</span>
+  <nav class="tb-links"><a href="#essay">About</a><button class="theme" id="theme" aria-label="Toggle dark mode">◐</button><a href="https://doi.org/10.5281/zenodo.24116216">Paper</a><a class="x" href="https://github.com/Tristan-Hotham/bus-deserts">Data and code</a></nav>
+</div>
+<div class="mapband">
+  <div class="pane" id="mapWrap" data-fullscreen-map role="application" aria-label="Map of England's bus stops coloured by weekday departures, with villages flagged where there is no usable bus">
+    <div id="map"></div>
+    <div class="nojs" id="nojs">Loading 251,790 bus stops. The map needs JavaScript and WebGL.</div>
+    <div class="cartouche" id="cartouche">
+      <button class="ct-toggle" id="ctToggle" aria-expanded="true">Bus deserts ▾</button>
+      <button class="ct-fold" id="ctFold" title="Fold the title" aria-label="Fold the title">▴</button>
+      <div class="ct-body">
+        <div class="kicker"><b>Data study</b><span>2026</span></div>
+        <h1>Bus <span class="a">deserts</span></h1>
+        <p class="dek">Every bus stop in England's timetables, by how many buses leave it on a weekday, when the last one goes and whether anything runs on Sunday. Squares are villages: red ones have no stop with a weekday bus within 800 m. Drag the clock (villages hide while it runs) to see the network shut down for the night.</p>
+        <div class="byline">Dr Tristan Hotham · Independent researcher · 2026</div>
+      </div>
+    </div>
+    <div class="ov-top">
+      <div class="srch"><input type="search" id="q" placeholder="Find a village or town" aria-label="Find a village or town" autocomplete="off"><ul class="sug" id="sug" role="listbox"></ul></div>
+      <div class="chips"><button class="chip" data-m="wk" aria-pressed="true">Weekday buses</button><button class="chip" data-m="last" aria-pressed="false">Last bus</button><button class="chip" data-m="sun" aria-pressed="false">Sunday</button><button class="chip lyr" id="lyrBtn" aria-expanded="false" aria-controls="lp">Layers</button></div>
+    </div>
+    <div class="lp" id="lp" role="dialog" aria-label="Map layers">
+      <h4>Layers</h4>
+      <label><input type="checkbox" id="lyS" checked> Bus stops</label>
+      <label><input type="checkbox" id="lyV" checked> Villages and towns (squares)</label>
+      <label><input type="checkbox" id="lyD"> Only villages with no usable bus</label>
+      <label><input type="checkbox" id="lyH"> Hamlets too</label>
+      <label><input type="checkbox" id="lyE" checked> England outline (the area mapped)</label>
+      <label><input type="checkbox" id="lyL" checked> Base map labels</label>
+    </div>
+    <div class="keys" id="keys"><b id="keyTitle">Weekday departures</b><div id="keyRows"></div>
+      <div class="row" style="margin-top:4px">Villages (squares): weekday buses at the busiest stop within 800 m</div><div class="row" style="flex-wrap:wrap;line-height:1.6;gap:2px 10px"><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#7A1F12;border:1.5px solid #fff;box-shadow:0 0 0 1px #7A1F12;margin:0 4px 0 0;vertical-align:-1px"></span>none</span><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#C8644A;border:1.5px solid #fff;box-shadow:0 0 0 1px #C8644A;margin:0 4px 0 0;vertical-align:-1px"></span>1 to 3</span><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#E8B04A;border:1.5px solid #fff;box-shadow:0 0 0 1px #E8B04A;margin:0 4px 0 0;vertical-align:-1px"></span>4 to 11</span><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#9DBBD6;border:1.5px solid #fff;box-shadow:0 0 0 1px #9DBBD6;margin:0 4px 0 0;vertical-align:-1px"></span>12 to 47</span><span style="white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:#1F3F66;border:1.5px solid #fff;box-shadow:0 0 0 1px #1F3F66;margin:0 4px 0 0;vertical-align:-1px"></span>48+</span></div>
+      <div class="row kx" style="color:#6E604E">England only · a Tuesday, Saturday and Sunday in 2026</div></div>
+    <div class="tl" id="tl"><button id="play" aria-label="Play the evening">▶ Play</button><input type="range" id="hr" min="12" max="25" step="0.25" value="12" aria-label="Time of day"><b id="hrl">All day</b></div>
+  </div>
+</div>
+<div class="wrap" id="essay">
+<p style="margin-top:6px">How far is your nearest bus, and when does the last one leave? I took the timetables that bus operators in England publish through the Department for Transport's Bus Open Data Service, counted the buses leaving every stop on an ordinary Tuesday, Saturday and Sunday, and then looked at every village in Wikidata to see what it actually gets.</p>
+<div class="byline">Dr Tristan Hotham · Independent researcher · 2026 · Data: Bus Open Data Service (OGL v3.0), Wikidata (CC0), English Indices of Deprivation 2025 and ONS Rural Urban Classification 2021 (OGL v3.0) · Base map: OpenFreeMap Positron</div>
+<div class="stats">
+<div class="stat"><b>33%</b><span>of English villages have no stop with a weekday bus within 800 m</span></div>
+<div class="stat"><b>41%</b><span>have no stop with four or more weekday buses</span></div>
+<div class="stat"><b>68%</b><span>have no Sunday bus within 800 m</span></div>
+<div class="stat"><b>6.0 million</b><span>people live in small areas with no usable weekday bus</span></div>
+</div>
+
+<h2><span class="n">01 · Distance</span>A third of villages have no weekday bus nearby</h2>
+<p>I checked 15,012 English villages. For 4,891 of them (33%), no stop within 800 metres, about a ten minute walk, had a single bus on the Tuesday. For 2,966 (20%) the nearest bus was more than 1.6 km away. Another 1,318 (9%) had a stop with one to three buses all day, which is often not enough to get somewhere and back. Together that is 6,209 villages, 41%, without what I call a usable weekday bus. Hamlets fare worse (60%); towns are almost all served (7 of 1,158 are not).</p>
+<div class="figure"><img src="img/map.jpg" alt="Map of England's villages as dots coloured from dark red (no bus within 800 m) to dark blue (48 or more weekday buses); red dots are spread through the countryside in every region" loading="lazy"><p class="src">Each dot is a village, coloured by its busiest stop within 800 m.</p></div>
+<div class="figure"><img src="img/classes.jpg" alt="Stacked bars: 52% of hamlets and 33% of villages have no bus within 800 m, against under 1% of towns and no cities" loading="lazy"><p class="src">The smaller the place, the thinner the service.</p></div>
+
+<h2><span class="n">02 · Time</span>The last bus home</h2>
+<p>Having a bus is one thing; getting home on it is another. Of the villages with any weekday bus within 800 m, the last one leaves before 19:00 in 4,342 of 10,119. Across all villages, 62% have no bus from 19:00 and 68% have none on a Sunday. Only 30% have a usable weekday service, an evening bus and a Sunday bus together. By 19:00, 38% of villages still have a bus to come; by 21:00, 25%. The slider on the map shows this happening stop by stop.</p>
+<div class="figure"><img src="img/lastbus.jpg" alt="Bar chart of the time of the last weekday bus in villages, with large groups at 18:00 to 18:59 and 22:00 to 23:59, and a line chart showing the share of villages with a bus still to come falling sharply after 17:00" loading="lazy"><p class="src">Many villages lose their buses around tea time; others are on a trunk route that runs late.</p></div>
+
+<h2><span class="n">03 · People</span>Who lives in a bus desert</h2>
+<p>Villages are places, not people, so I also looked at England's 33,755 small areas (LSOAs, about 1,700 people each). 6.0 million people (10.5%) live in one with no usable weekday bus within 800 m of its centre point. In rural areas it is 46% of residents; in urban areas, 3.5%. In the smallest, most remote rural areas it is 70%.</p>
+<div class="figure"><img src="img/rural.jpg" alt="Bars by rural-urban class: residents with no usable weekday bus rise from 3% in urban areas near a city to 70% in smaller rural areas far from a city" loading="lazy"><p class="src">Small areas by the 2021 rural-urban classification.</p></div>
+<p>Before looking, I wrote down three expectations. Rural areas would be worse served: they are, by a wide margin. Holding rurality and region fixed, more deprived areas would be better served, because buses tend to follow the people who use them: they are (odds ratio 0.68 per standard deviation of the deprivation score, 95% interval 0.60 to 0.78), but the pattern inside the countryside is a hump, and it comes from whether there is a stop at all rather than how often buses call. And areas with more older residents would be worse served: they are (odds ratio 1.28, 1.19 to 1.38). 2.0 million people aged 60 and over live in small areas with no usable weekday bus.</p>
+<p>One planned check did not pass. A measure of housing condition that should have nothing to do with buses was also linked to poor service, which suggests the rural-urban classes do not capture every difference between places. So treat the deprivation and age results as descriptive patterns, not causes.</p>
+<div class="figure"><img src="img/deprivation.jpg" alt="Line chart by deprivation decile: in rural areas the share with no usable bus is about 13% in the most deprived decile, over 50% in the middle deciles and 24% in the least deprived; urban areas stay under 7% throughout" loading="lazy"><p class="src">Deprivation deciles from the English Indices of Deprivation 2025.</p></div>
+<div class="figure"><img src="img/checks.jpg" alt="Forest plot of odds ratios under each check: deprivation below 1 in every check except the token-service-only outcome, where the interval crosses 1; the share aged 60 and over above 1 in every check" loading="lazy"><p class="src">Every planned check of the small-area model.</p></div>
+
+<h2><span class="n">04 · Regions</span>Where the buses are</h2>
+<p>Counting each bus once at every stop it calls at, England has 260 weekday stop departures for every 1,000 residents. London has 473. Outside London the range runs from 425 in the West Midlands to 146 in the East of England. The share of villages with no usable weekday bus runs from 29% in the North East to 50% in the West Midlands: a region can have a busy city network and a thin rural one at the same time.</p>
+<div class="figure"><img src="img/regions.jpg" alt="Two bar charts by region: weekday stop departures per 1,000 residents, highest in London and lowest in the East of England, and the share of villages with no usable weekday bus, highest in the West Midlands" loading="lazy"><p class="src">Regions are ONS regions; stops are placed by their coordinates.</p></div>
+
+<h2><span class="n">05 · How I did this</span>Timetables, villages and small areas</h2>
+<p><b>Buses.</b> The Bus Open Data Service publishes every registered local bus timetable in England as regional GTFS files. I counted the departures from each stop on one Tuesday, Saturday and Sunday in 2026, kept bus and coach stops, and removed stops that appear in two regional files. 251,790 bus stops remain, 246,358 with at least one Tuesday bus.</p>
+<p><b>Places.</b> Villages, hamlets and towns come from Wikidata. For each one I found the nearest stop with a weekday bus, and among stops within 800 m, the busiest one, the last departure and whether anything runs after 19:00 or on Sunday. I read every town flagged as a desert by eye and fixed or removed 8 bad points. Small areas use the English Indices of Deprivation 2025 and the ONS rural-urban classification; I wrote the analysis plan before computing any result.</p>
+<p><b>What this cannot say.</b> It is one week's timetables. School-day-only buses, dial-a-ride services and community transport may be missing or look odd; a few places, such as Hawes in the Yorkshire Dales, have stops in the files but no Tuesday trips. Distances are straight lines, not walks, and each small area is placed at a point inside it, not where most of its people live. A stop departure is a bus calling, not a useful journey.</p>
+<details><summary>Sources and licences</summary>
+<ul class="plain">
+<li>Timetables: Department for Transport, Bus Open Data Service (data.bus-data.dft.gov.uk), regional GTFS files, downloaded 2026. Open Government Licence v3.0.</li>
+<li>Villages, hamlets and towns: Wikidata (CC0).</li>
+<li>English Indices of Deprivation 2025 (Ministry of Housing, Communities and Local Government), Open Government Licence v3.0.</li>
+<li>Rural Urban Classification 2021 and LSOA 2021 boundaries (Office for National Statistics), Open Government Licence v3.0, via the geographr R package (humaniverse, GitHub). Region and country boundaries: ONS, OGL v3.0.</li>
+<li>Base map: OpenFreeMap Positron style (OpenStreetMap, ODbL). MapLibre GL JS 4.7.1 (BSD 3-Clause).</li>
+<li>Text, figures and data CC BY 4.0; code MIT.</li>
+</ul></details>
+<div class="cta"><a class="p" href="https://doi.org/10.5281/zenodo.24116216">Read the paper</a><a href="https://github.com/Tristan-Hotham/bus-deserts">Data and code</a><a href="https://blog.tristanhotham.com/2026/10/31/bus-deserts/">Blog post</a></div>
+<footer>
+<p>Dr Tristan Hotham, Independent researcher. ORCID <a href="https://orcid.org/0000-0003-4931-9349">0000-0003-4931-9349</a>.</p>
+<p>Cite as: Hotham, T. (2026) Bus deserts: villages without a usable bus, the last bus home and who lives beyond the network in England. Zenodo. <a href="https://doi.org/10.5281/zenodo.24116216">10.5281/zenodo.24116216</a></p>
+<p>Code: <a href="https://github.com/Tristan-Hotham/bus-deserts">github.com/Tristan-Hotham/bus-deserts</a> (MIT). Text, figures and data CC BY 4.0.</p>
+<p>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</p>
+</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="js/page.js?v=2026a"></script>
+<!-- map-fullscreen v1 -->
+<style id="mfs-style">
+.mfs-btn{position:absolute;top:10px;right:10px;z-index:1001;width:34px;height:34px;border:2px solid rgba(0,0,0,.25);border-radius:4px;background:#fff;color:#222;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.mfs-btn:hover{background:#f2f2f2}
+.mfs-btn svg{width:18px;height:18px}
+.mfs-host.mfs-btn-left .mfs-btn{right:auto;left:54px}
+.mfs-fake{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;margin:0!important;z-index:100000!important;border-radius:0!important}
+html.mfs-lock,html.mfs-lock body{overflow:hidden!important}
+:fullscreen.mfs-host{width:100vw!important;height:100vh!important;max-width:none!important;max-height:none!important;margin:0!important;border-radius:0!important}
+</style>
+<script id="mfs-script">
+(function(){
+  var ICON_OPEN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+  var ICON_CLOSE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
+  function poke(){setTimeout(function(){window.dispatchEvent(new Event('resize'));},60);setTimeout(function(){window.dispatchEvent(new Event('resize'));},400);}
+  function realFS(){return document.fullscreenElement||document.webkitFullscreenElement;}
+  function add(el){
+    if(el.__mfs)return; el.__mfs=1;
+    var cs=getComputedStyle(el); if(cs.position==='static')el.style.position='relative';
+    el.classList.add('mfs-host');
+    // avoid clashing with a top-right Leaflet control (e.g. "Map layers")
+    var tr=el.querySelector('.leaflet-top.leaflet-right');
+    if(tr&&tr.children.length){ el.classList.add('mfs-btn-left'); }
+    var b=document.createElement('button'); b.type='button'; b.className='mfs-btn';
+    b.title='Full screen map'; b.setAttribute('aria-label','Full screen map'); b.innerHTML=ICON_OPEN;
+    ['click','dblclick','mousedown','touchstart','wheel'].forEach(function(t){b.addEventListener(t,function(e){e.stopPropagation();},{passive:t!=='click'});});
+    function setIcon(on){b.innerHTML=on?ICON_CLOSE:ICON_OPEN;b.title=on?'Exit full screen':'Full screen map';b.setAttribute('aria-label',b.title);}
+    function exitFake(){el.classList.remove('mfs-fake');document.documentElement.classList.remove('mfs-lock');setIcon(false);poke();}
+    b.addEventListener('click',function(e){
+      e.preventDefault();
+      if(el.classList.contains('mfs-fake')){exitFake();return;}
+      if(realFS()){(document.exitFullscreen||document.webkitExitFullscreen).call(document);return;}
+      var req=el.requestFullscreen||el.webkitRequestFullscreen;
+      if(req){ try{ var p=req.call(el); if(p&&p.catch)p.catch(function(){el.classList.add('mfs-fake');document.documentElement.classList.add('mfs-lock');setIcon(true);poke();}); }catch(err){el.classList.add('mfs-fake');document.documentElement.classList.add('mfs-lock');setIcon(true);poke();} }
+      else { el.classList.add('mfs-fake');document.documentElement.classList.add('mfs-lock');setIcon(true);poke(); }
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&el.classList.contains('mfs-fake'))exitFake();});
+    ['fullscreenchange','webkitfullscreenchange'].forEach(function(t){document.addEventListener(t,function(){setIcon(realFS()===el);poke();});});
+    el.appendChild(b);
+  }
+  function scan(){
+    var els=document.querySelectorAll('[data-fullscreen-map], .leaflet-container, .maplibregl-map, .mapboxgl-map');
+    els.forEach(function(el){
+      if(el.closest('.mfs-host')&&!el.classList.contains('mfs-host'))return;
+      var r=el.getBoundingClientRect(); if(r.width<200||r.height<150)return;
+      add(el);
+    });
+  }
+  function start(){scan(); var n=0; var t=setInterval(function(){scan(); if(++n>20)clearInterval(t);},500);}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start); else start();
+})();
+</script>
+<!-- /map-fullscreen -->
+
+<script src="https://maps.tristanhotham.com/assets/site-nav.js" defer></script>
+</body>
+</html>
