@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this data or code, please cite it as below."
+title: "Bus Deserts: Villages Without a Usable Bus, the Last Bus Home and Who Lives Beyond the Network in England"
+type: dataset
+authors:
+  - family-names: Hotham
+    given-names: Tristan
+    orcid: "https://orcid.org/0000-0003-4931-9349"
+    affiliation: "Independent researcher"
+doi: "10.5281/zenodo.24116216"
+url: "https://maps.tristanhotham.com/bus-deserts/"
+repository-code: "https://github.com/Tristan-Hotham/bus-deserts"
+license: CC-BY-4.0
+keywords:
+  - "bus services"
+  - "rural accessibility"
+  - "transport poverty"
+  - "public transport supply"
+  - "GTFS"
+  - "Bus Open Data Service"
+  - "England"
+  - "villages"
